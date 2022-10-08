@@ -62,3 +62,47 @@ def delete_tutorial(url):
             index = tutorials.index(tutorial)
             del tutorials[index]
     save_file(tutorials)
+
+def get_url():
+    url = input("Enter full URL of tutorial: ")
+    while url[:32] != "https://www.youtube.com/watch?v=":
+        url = input("Please enter a valid youtube URL: ")        
+    return url
+
+def get_time():
+    time = input("Enter time (hh:mm:ss)")
+    if len(time) <= 2 and time.isnumeric():
+        if int(time) > 0 and int(time) < 60:
+            return time
+        else:
+            print("Invalid time")
+    elif len(time) > 2:
+        if time.__contains__(":"):
+            array = time.split(":")
+            if len(array) == 1:
+                print("Invalid time")
+            elif len(array) == 2:
+                if array[0].isnumeric() and int(array[0]) >= 0 and int(array[0]) < 60:
+                    if array[1].isnumeric() and int(array[1]) >= 0 and int(array[1]) < 60:
+                        return "{}:{}".format(array[0], array[1])
+                    else: 
+                        print("Invalid time")
+                else:
+                    print("Invalid time")
+            elif len(array) == 3:
+                if array[0].isnumeric() and int(array[0]) >= 0 and int(array[0]) < 60:
+                    if array[1].isnumeric() and int(array[1]) >= 0 and int(array[1]) < 60:
+                        if array[2].isnumeric() and int(array[2]) >= 0 and int(array[2]) < 60:
+                            return "{}:{}:{}".format(array[0], array[1], array[2])
+                        else:
+                            print("Invalid time")
+                    else:
+                        print("Invalid time")
+                else:
+                    print("Invalid time")
+            else:
+                print("Invalid time")
+        else:
+            print("Invalid time")
+    else:
+        print("Invalid time")

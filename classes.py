@@ -1,4 +1,4 @@
-import urllib
+import urllib.request
 import json
 from dotenv import load_dotenv
 import os

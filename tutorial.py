@@ -16,17 +16,17 @@ def main():
     if selection == '1':
         list_tutorials()
     elif selection == '2':
-        add_url = input("Enter full URL of tutorial: ")
+        add_url = get_url()
         add_tutorial(add_url)
     elif selection == '3':
-        update_url = input("Enter full URL of tutorial: ")
-        time = input("Tutorial time (hh:mm:ss): ")
+        update_url = get_url()
+        time = get_time()
         update_progress(update_url, time)
     elif selection == '4':
-        complete_url = input("Tutorial URL: ")
+        complete_url = get_url()
         complete_tutorial(complete_url)
     elif selection == '5':
-        delete_url = input("Enter a full URL to delete: ")
+        delete_url = get_url()
         delete_tutorial(delete_url)
     elif selection == '6':
         print("Goodbye!")
