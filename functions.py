@@ -1,21 +1,25 @@
 import pickle
 from pathlib import Path
 from classes import *
+from dotenv import load_dotenv
+
+load_dotenv()
+program_path = os.getenv('PROGRAM_PATH')
 
 def check_file():
     tutorial_list = []
-    path = Path("tutorials.data")
+    path = Path(f"{program_path}/tutorials.data")
     if path.is_file() == 0:
-        with open("tutorials.data", "wb") as tut_file:
+        with open("{}/tutorials.data".format(program_path), "wb") as tut_file:
             pickle.dump(tutorial_list, tut_file)
 
 def load_file():
-    with open('tutorials.data', 'rb') as tut_file:
+    with open('{}/tutorials.data'.format(program_path), 'rb') as tut_file:
         tutorial_list = pickle.load(tut_file)
     return tutorial_list
 
 def save_file(tutorial_list):
-    with open('tutorials.data', 'wb') as tut_file:
+    with open('{}/tutorials.data'.format(program_path), 'wb') as tut_file:
         pickle.dump(tutorial_list, tut_file)
 
 def get_bars(part, total):
